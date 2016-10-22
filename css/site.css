@@ -1,0 +1,223 @@
+html,
+body {
+    height: 100%;
+}
+h1{
+	margin-bottom:1em;
+}
+.wrap {
+    min-height: 100%;
+    height: auto;
+    margin: 0 auto -60px;
+    padding: 0 0 60px;
+}
+
+.wrap > .container {
+    padding: 70px 15px 20px;
+}
+
+.footer {
+    height: 60px;
+    background-color: #f5f5f5;
+    border-top: 1px solid #ddd;
+    padding-top: 20px;
+}
+
+.jumbotron {
+    text-align: center;
+    background-color: transparent;
+}
+
+.jumbotron .btn {
+    font-size: 21px;
+    padding: 14px 24px;
+}
+
+.not-set {
+    color: #c55;
+    font-style: italic;
+}
+
+/* add sorting icons to gridview sort links */
+a.asc:after, a.desc:after {
+    position: relative;
+    top: 1px;
+    display: inline-block;
+    font-family: 'Glyphicons Halflings';
+    font-style: normal;
+    font-weight: normal;
+    line-height: 1;
+    padding-left: 5px;
+}
+
+a.asc:after {
+    content: /*"\e113"*/ "\e151";
+}
+
+a.desc:after {
+    content: /*"\e114"*/ "\e152";
+}
+
+.sort-numerical a.asc:after {
+    content: "\e153";
+}
+
+.sort-numerical a.desc:after {
+    content: "\e154";
+}
+
+.sort-ordinal a.asc:after {
+    content: "\e155";
+}
+
+.sort-ordinal a.desc:after {
+    content: "\e156";
+}
+
+.grid-view th {
+    white-space: nowrap;
+}
+
+.hint-block {
+    display: block;
+    margin-top: 5px;
+    color: #999;
+}
+
+.error-summary {
+    color: #a94442;
+    background: #fdf7f7;
+    border-left: 3px solid #eed3d7;
+    padding: 10px 20px;
+    margin: 0 0 15px 0;
+}
+
+ul.hulist, ul.hulist_ex{
+	list-style-type: none;
+	margin: 0;
+	padding: 0;
+}
+
+ul.hulist li{
+	display:inline;
+	padding-right:1.1em;
+	/*width:210px;*/
+	float:left;
+}
+
+ul.hulist_ex li{
+	display:inline;
+	padding-right:0;
+	float:left;
+}
+
+ul#moduleList li{
+	font-size:1.5em;
+}
+
+select.searchDropdown{
+	background:#ffffff;
+	padding:.2em;
+}
+
+.serial_column{
+	width:2%;
+}
+
+.entry_column{
+	width:22%;
+	max-width:22%;
+}
+
+.candel_column{
+	width:5%;
+}
+.action_column{
+	width:6%;
+}
+
+#defaultList{
+	width:85%;
+}
+
+select.boolDropdown{
+	width:13%;
+}
+
+select.posDropdown{
+	width:20%;
+}
+
+#collocation-create-form input[type=text], #collocation-update-form input[type=text]{
+	width:25%;
+}
+
+#collocation-create-form textarea, #collocation-update-form textarea{
+	/*width:100%;*/
+	/*height:60%;*/
+}
+
+select.patternDropdown{
+	width:35%;
+}
+
+select.wordDropdown{
+	width:115%;
+}
+
+select.wordposDropdown{
+	/*width:80%;*/
+}
+
+.pos_column{
+	width:12%;
+}
+
+.word_column{
+	width:15%;
+}
+
+.pattern_column{
+	width:12%;
+}
+
+.example_column{
+	/*width:;*/
+}
+
+.morecontent span {
+	display: none;
+}
+
+.morelink {
+	display: block;
+}
+
+.clear{
+	clear:both;
+}
+
+select.collocation-examples-source{
+	width:30%;
+}
+
+div.textarea-group{
+	margin-top:1em;
+	/*margin-bottom:1em;*/
+}
+
+table.detail-view th{
+	width:10% !important;
+}
+
+select#example-collocationid{
+	width:17%;
+}
+
+select#example-source{
+	width:20%;
+}
+
+.hide{
+    display:none;
+}

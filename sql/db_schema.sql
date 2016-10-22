@@ -1,0 +1,63 @@
+CREATE TABLE pos
+(
+    Id SMALLINT(6) PRIMARY KEY NOT NULL AUTO_INCREMENT,
+    Entry VARCHAR(20) NOT NULL,
+    EntryZht VARCHAR(30) NOT NULL,
+    EntryZhs VARCHAR(30) NOT NULL,
+    EntryJap VARCHAR(30) NOT NULL,
+    RowVersion TIMESTAMP DEFAULT CURRENT_TIMESTAMP NOT NULL,
+    CanDel TINYINT(1) unsigned DEFAULT '1'
+);
+CREATE INDEX Entry ON pos (Entry);
+CREATE UNIQUE INDEX Id ON pos (Id);
+CREATE TABLE word
+(
+    Id BIGINT(20) PRIMARY KEY NOT NULL AUTO_INCREMENT,
+    Entry VARCHAR(50) NOT NULL,
+    EntryZht VARCHAR(200) NOT NULL,
+    EntryZhs VARCHAR(200) NOT NULL,
+    EntryJap VARCHAR(200) NOT NULL,
+    posId SMALLINT(6) DEFAULT '1' NOT NULL,
+    RowVersion TIMESTAMP DEFAULT CURRENT_TIMESTAMP NOT NULL,
+    CanDel TINYINT(1) unsigned DEFAULT '1',
+    CONSTRAINT word_ibfk_1 FOREIGN KEY (posId) REFERENCES pos (Id) ON DELETE CASCADE ON UPDATE CASCADE
+);
+CREATE INDEX idx_entry ON word (Entry);
+CREATE UNIQUE INDEX idx_id ON word (Id);
+CREATE INDEX posId ON word (posId);
+CREATE TABLE collocation
+(
+    Id BIGINT(20) PRIMARY KEY NOT NULL AUTO_INCREMENT,
+    wordId BIGINT(20) NOT NULL,
+    colWordId BIGINT(20) NOT NULL,
+    CollocationPattern INT(11) NOT NULL,
+    RowVersion TIMESTAMP DEFAULT CURRENT_TIMESTAMP NOT NULL,
+    CONSTRAINT collocation_word_Id_fk FOREIGN KEY (wordId) REFERENCES word (Id) ON DELETE CASCADE ON UPDATE CASCADE,
+    CONSTRAINT collocation_colword__fk FOREIGN KEY (colWordId) REFERENCES word (Id) ON DELETE CASCADE ON UPDATE CASCADE
+);
+CREATE INDEX collocation_colword__fk ON collocation (colWordId);
+CREATE INDEX collocation_word_Id_fk ON collocation (wordId);
+CREATE UNIQUE INDEX idx_id ON collocation (Id);
+CREATE TABLE example
+(
+    Id BIGINT(20) PRIMARY KEY NOT NULL AUTO_INCREMENT,
+    Entry VARCHAR(1000) NOT NULL,
+    EntryZht VARCHAR(1000),
+    EntryZhs VARCHAR(1000),
+    EntryJap VARCHAR(1000),
+    Source SMALLINT(6) DEFAULT '1',
+    Remark VARCHAR(200),
+    CollocationId BIGINT(20) NOT NULL,
+    RowVersion TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+    CONSTRAINT example_collocation_Id_fk FOREIGN KEY (CollocationId) REFERENCES collocation (Id) ON DELETE CASCADE ON UPDATE CASCADE
+);
+CREATE INDEX example_collocation_Id_fk ON example (CollocationId);
+
+CREATE TABLE user
+(
+    id INT(11) PRIMARY KEY NOT NULL AUTO_INCREMENT,
+    username VARCHAR(255) NOT NULL,
+    auth_key VARCHAR(32),
+    password_hash VARCHAR(255) NOT NULL,
+    access_token VARCHAR(100)
+);

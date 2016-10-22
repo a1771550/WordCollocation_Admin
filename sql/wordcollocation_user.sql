@@ -1,0 +1,1 @@
+INSERT INTO wordcollocation.user (username, auth_key, password_hash, access_token) VALUES ('a1771550', null, '$2y$13$KhRfKrT3t4cUtN0uw71yueeyXCuA.ou7MxnJDaBxj8dUDoJGFQ6O2', null);

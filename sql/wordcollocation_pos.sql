@@ -1,0 +1,9 @@
+INSERT INTO wordcollocation.pos (Entry, EntryZht, EntryZhs, EntryJap, RowVersion, CanDel) VALUES ('noun', '名詞', '名词', '名詞', '2016-10-03 23:22:35', 0);
+INSERT INTO wordcollocation.pos (Entry, EntryZht, EntryZhs, EntryJap, RowVersion, CanDel) VALUES ('verb', '動詞', '动词', '動詞', '2016-10-03 23:23:36', 0);
+INSERT INTO wordcollocation.pos (Entry, EntryZht, EntryZhs, EntryJap, RowVersion, CanDel) VALUES ('adjective', '形容詞', '形容词', '形容詞', '2016-10-03 23:23:37', 0);
+INSERT INTO wordcollocation.pos (Entry, EntryZht, EntryZhs, EntryJap, RowVersion, CanDel) VALUES ('adverb', '副詞', '副词', '副詞', '2016-10-03 23:23:37', 0);
+INSERT INTO wordcollocation.pos (Entry, EntryZht, EntryZhs, EntryJap, RowVersion, CanDel) VALUES ('preposition', '前置詞', '前置词', '前置詞', '2016-10-03 23:23:37', 0);
+INSERT INTO wordcollocation.pos (Entry, EntryZht, EntryZhs, EntryJap, RowVersion, CanDel) VALUES ('pronoun', '代名詞', '代名词', '代名詞', '2016-10-03 23:23:37', 0);
+INSERT INTO wordcollocation.pos (Entry, EntryZht, EntryZhs, EntryJap, RowVersion, CanDel) VALUES ('conjunction', '連接詞', '连接词', '接続詞', '2016-10-03 23:23:37', 0);
+INSERT INTO wordcollocation.pos (Entry, EntryZht, EntryZhs, EntryJap, RowVersion, CanDel) VALUES ('interjection', '感嘆詞', '感叹词', '間投詞', '2016-10-03 23:23:37', 0);
+INSERT INTO wordcollocation.pos (Entry, EntryZht, EntryZhs, EntryJap, RowVersion, CanDel) VALUES ('phrase', '片語', '片语', '語句', '2016-10-03 23:23:37', 0);
