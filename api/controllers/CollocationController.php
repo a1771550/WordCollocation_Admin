@@ -18,7 +18,10 @@ class CollocationController extends BaseController
 		$conn = Yii::$app->getDb();
 		$command = $conn->createCommand($sql);
 		$collocations = $command->queryAll();
-		if (empty($collocations)) $jsonlist = null;
+		if (empty($collocations)){
+			$this->setHeader(200);
+			echo '';
+		} 
 		else {
 			foreach ($collocations as $collocation) {
 				array_push($jsonlist, array('pos' => $collocation['pos'], 'posZht' => $collocation['posZht'], 'posZhs' => $collocation['posZhs'], 'posJap' => $collocation['posJap'], 'colpos' => $collocation['colpos'], 'colposZht' => $collocation['colposZht'], 'colposZhs' => $collocation['colposZhs'], 'colposJap' => $collocation['colposJap'], 'word' => $collocation['word'], 'wordZht' => $collocation['wordZht'], 'wordZhs' => $collocation['wordZhs'], 'wordJap' => $collocation['wordJap'], 'colword' => $collocation['colword'], 'colwordZht' => $collocation['colwordZht'], 'colwordZhs' => $collocation['colwordZhs'],
@@ -27,9 +30,9 @@ class CollocationController extends BaseController
 					'remark' =>
 						$collocation['Remark']));
 			}
-		}
-		$this->setHeader(200);
-		echo $callback!=null? "$callback(" . Json::htmlEncode($jsonlist) . ")":Json::htmlEncode($jsonlist);
+			$this->setHeader(200);
+			echo $callback!=null? "$callback(" . Json::htmlEncode($jsonlist) . ")":Json::htmlEncode($jsonlist);
+		}		
 	}
 
 	public function actionSearch()
@@ -47,7 +50,10 @@ class CollocationController extends BaseController
 		$conn = Yii::$app->getDb();
 		$command = $conn->createCommand($sql, [':word' => $word, ':colposId' => $colposId]);
 		$collocations = $command->queryAll();
-		if (empty($collocations)) $jsonlist = null;
+		if (empty($collocations)){
+			$this->setHeader(200);
+			echo '';
+		}
 		else {
 			foreach ($collocations as $collocation) {
 				array_push($jsonlist, array('pos' => $collocation['pos'], 'posZht' => $collocation['posZht'], 'posZhs' => $collocation['posZhs'], 'posJap' => $collocation['posJap'], 'colpos' => $collocation['colpos'], 'colposZht' => $collocation['colposZht'], 'colposZhs' => $collocation['colposZhs'], 'colposJap' => $collocation['colposJap'], 'word' => $collocation['word'], 'wordZht' => $collocation['wordZht'], 'wordZhs' => $collocation['wordZhs'], 'wordJap' => $collocation['wordJap'], 'colword' => $collocation['colword'], 'colwordZht' => $collocation['colwordZht'], 'colwordZhs' => $collocation['colwordZhs'],
@@ -56,9 +62,10 @@ class CollocationController extends BaseController
 					'remark' =>
 						$collocation['Remark']));
 			}
+			$this->setHeader(200);
+			echo $callback!=null? "$callback(" . Json::htmlEncode($jsonlist) . ")":Json::htmlEncode($jsonlist);
 		}
-		$this->setHeader(200);
-		echo $callback!=null? "$callback(" . Json::htmlEncode($jsonlist) . ")":Json::htmlEncode($jsonlist);
+		
 	}
 
 	public function actionSearch_bak()

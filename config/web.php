@@ -11,6 +11,10 @@ $config = [
 	'timeZone' => 'Asia/Hong_Kong',
 	//'defaultRoute'=>'site',
 	'components' => [
+		'authManager'=>[
+			'class'=> 'yii\rbac\PhpManager',
+			//'class'=>'yii\rbac\DbManager',
+		],
 		'assetsAutoCompress' =>
 			[
 				'class'                         => '\skeeks\yii2\assetsAuto\AssetsAutoCompressComponent',
