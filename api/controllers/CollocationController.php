@@ -10,8 +10,7 @@ use yii\helpers\Json;
 class CollocationController extends BaseController
 {
 	public function actionIndex(){
-		$callback = Yii::$app->request->get('callback',null);
-		$collocations = null;
+		$callback = Yii::$app->request->get('callback',null);		
 		$jsonlist = [];
 		$sql="Select p.Entry as pos, p.EntryZht as posZht, p.EntryZhs as posZhs, p.EntryJap as posJap, w.Entry as word, w
 .EntryZht as wordZht, w.EntryZhs as wordZhs, w.EntryJap as wordJap, cp.Entry as colpos, cp.EntryZht as colposZht, cp.EntryZhs as colposZhs, cp.EntryJap as colposJap, cw.Entry as colword, cw.EntryZht as colwordZht, cw.EntryZhs as colwordZhs, cw.EntryJap as colwordJap, c.CollocationPattern, e.Entry as ex, e.EntryZht as exZht, e.EntryZhs as exZhs, e.EntryJap as exJap, e.Source, e.Remark from collocation c inner join word w on c.wordId=w.Id inner join word cw on c.colWordId = cw.Id inner join pos p on w.posId=p.Id inner join pos cp on cw.posId = cp.Id inner join example e on c.Id = e.CollocationId";
@@ -41,9 +40,7 @@ class CollocationController extends BaseController
 		$word = Yii::$app->request->get('word');
 		$colposId = Yii::$app->request->get('id');
 		$wordIds = Word::find()->where(['Entry' => $word])->asArray();
-		$colwords = Word::find()->where(['posId' => $colposId])->asArray();
-		$sql = null;
-		$collocations = null;
+		$colwords = Word::find()->where(['posId' => $colposId])->asArray();		
 		$jsonlist = [];
 		$sql = "Select p.Entry as pos, p.EntryZht as posZht, p.EntryZhs as posZhs, p.EntryJap as posJap, w.Entry as word, w
 .EntryZht as wordZht, w.EntryZhs as wordZhs, w.EntryJap as wordJap, cp.Entry as colpos, cp.EntryZht as colposZht, cp.EntryZhs as colposZhs, cp.EntryJap as colposJap, cw.Entry as colword, cw.EntryZht as colwordZht, cw.EntryZhs as colwordZhs, cw.EntryJap as colwordJap, c.CollocationPattern, e.Entry as ex, e.EntryZht as exZht, e.EntryZhs as exZhs, e.EntryJap as exJap, e.Source, e.Remark from collocation c inner join word w on c.wordId=w.Id inner join word cw on c.colWordId = cw.Id inner join pos p on w.posId=p.Id inner join pos cp on cw.posId = cp.Id inner join example e on c.Id = e.CollocationId where c.wordId in (select Id from word where Entry = :word) and c.colWordId in (select w.Id from word w inner join pos p on w.posId=p.Id where p.Id=:colposId)";
